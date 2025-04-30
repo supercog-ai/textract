@@ -8,10 +8,10 @@ import textract
 scripts = glob.glob("bin/*")
 
 # read in the description from README
-with open("README.rst") as stream:
+with open("README.md") as stream:
     long_description = stream.read()
 
-github_url = 'https://github.com/deanmalmgren/textract'
+github_url = 'https://github.com/supercog-ai/textract'
 
 
 def parse_requirements(requirements_filename):
@@ -41,14 +41,17 @@ dependencies, dependency_links = parse_requirements(requirements_filename)
 
 
 setup(
-    name=textract.__name__,
-    version="1.6.5",
+    name="textract-supercog",
+    # Updated version number
+    version="1.6.5.post1",
     description="extract text from any document. no muss. no fuss.",
     long_description=long_description,
+    long_description_content_type="text/markdown",
     url=github_url,
     download_url="%s/archives/master" % github_url,
-    author='Dean Malmgren',
-    author_email='dean.malmgren@datascopeanalytics.com',
+    # Added your info while preserving original attribution
+    author='SuperCog AI (fork), Original author: Dean Malmgren',
+    author_email='your.email@example.com',  # Replace with your email
     license='MIT',
     scripts=scripts,
     packages=[
@@ -61,4 +64,15 @@ setup(
     },
     dependency_links=dependency_links,
     zip_safe=False,
+    # Added classifiers for better PyPI categorization
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3',
+        'Topic :: Text Processing',
+        'Topic :: Text Processing :: Linguistic',
+        'Topic :: Utilities',
+    ],
+    python_requires='>=3.6',
 )
